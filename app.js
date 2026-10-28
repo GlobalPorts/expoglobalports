@@ -1,7 +1,7 @@
 import {renderPortsView} from './ports.js';
 import {renderMarketsView} from './markets.js';
 import {renderCruisesView} from './cruises.js';
-import {typeName} from './presentation.js';
+import {typeName,unitLabel} from './presentation.js';
 import {seriesMetrics,comparisonMetrics,cargoMetrics,cargoSeriesKey,cruiseMetrics,periodMetrics} from './series-metrics.js';
 import {renderMacro} from './macro.js';
 import {formatNumber} from './formatting.js';
@@ -18,9 +18,9 @@ function options(vals,selected,all='Todos'){return (all!==null?`<option value=""
 const field=(id,label,opts,wide=false)=>`<div class="filter ${wide?'wide':''}"><label for="${id}">${label}</label><select id="${id}">${opts}</select></div>`;
 function toast(t){$('#toast').textContent=t;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',3500)}
 const head=(tag,title,sub)=>`<section class="page-head"><div><span class="eyebrow">${tag}</span><h1>${title}</h1><p class="subtitle">${sub}</p></div></section>`;
-function kpi(label,value,unit,foot,delta=null,digits=null){return `<div class="kpi${Math.abs(value)>=1e7?' kpi-long':''}"><div class="kpi-label">${label}</div><div class="kpi-value">${fmt(value,digits??(unit==='%'?1:unit==='US$/libra'?4:(unit.startsWith('US$')||unit==='ARS/t'||unit==='centavos US$/bushel')?2:Number.isFinite(value)&&Math.abs(value)<100?2:0))}<span class="kpi-unit">${unit}</span></div><div class="kpi-foot">${delta!==null?`<span class="delta ${delta<0?'negative':''}">${delta>0?'+':''}${fmt(delta,1)} %</span>`:''}${foot}</div></div>`}
+function kpi(label,value,unit,foot,delta=null,digits=null,fixed=false){return `<div class="kpi${Math.abs(value)>=1e7?' kpi-long':''}"><div class="kpi-label">${label}</div><div class="kpi-value">${fmt(value,digits??(unit==='%'?1:unit==='US$/libra'?4:(unit.startsWith('US$')||unit==='ARS/t'||unit==='centavos US$/bushel')?2:Number.isFinite(value)&&Math.abs(value)<100?2:0),fixed)}<span class="kpi-unit${unit==='%'?' kpi-unit-symbol':''}">${unitLabel(unit)}</span></div><div class="kpi-foot">${delta!==null?`<span class="delta ${delta<0?'negative':''}">${delta>0?'+':''}${fmt(delta,1)} %</span>`:''}${foot}</div></div>`}
 const chart=chartMarkup;
-function ranking(rows,unit='',click=false){if(!rows.length)return '<div class="empty">No hay información para esta selección.</div>';const max=rows[0].value||1;return `<div class="ranking">${rows.slice(0,7).map(r=>`<div class="rank-line"><div class="rank-label">${click?`<button data-port="${esc(r.label)}" title="Filtrar ${esc(r.label)}">${esc(r.label)}</button>`:esc(r.label)}</div><span class="rank-value">${fmt(r.value)} <small class="muted">${unit}</small></span><span class="track"><i style="width:${Math.max(1,r.value/max*100)}%"></i></span></div>`).join('')}</div>`}
+function ranking(rows,unit='',click=false){if(!rows.length)return '<div class="empty">No hay información para esta selección.</div>';const max=rows[0].value||1;return `<div class="ranking">${rows.slice(0,7).map(r=>`<div class="rank-line"><div class="rank-label">${click?`<button data-port="${esc(r.label)}" title="Filtrar ${esc(r.label)}">${esc(r.label)}</button>`:esc(r.label)}</div><span class="rank-value">${fmt(r.value)} <small class="muted">${unitLabel(unit)}</small></span><span class="track"><i style="width:${Math.max(1,r.value/max*100)}%"></i></span></div>`).join('')}</div>`}
 function geo(){return {year:S.year,quarter:S.quarter,province:S.province,port:S.port}}
 function actualRows(){return filterCargo(S.type==='Carga Containerizada'?D.containers:D.cargo,{...geo(),type:S.type,sector:S.sector,rubro:S.rubro,unit:S.type==='Carga Containerizada'?'TEU':S.unit})}
 function viewContext(){return {data:D,commodities:C,state:S,head,field,options,kpi,fmt,esc,chart,ranking}}

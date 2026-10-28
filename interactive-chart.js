@@ -1,10 +1,10 @@
-import {formatPercent} from './presentation.js';
+import {formatPercent,unitLabel} from './presentation.js';
 import {formatNumber} from './formatting.js';
 import {zoomWindow,nearestPoint,chartDomain,splitChartSegments} from './chart-math.js';
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(x,d=2)=>formatNumber(x,d);
-export function chartMarkup(points,{unit='',color='#1860b4',floorZero=false,mode='line'}={}){return points.length?`<gp-chart data-series="${esc(JSON.stringify(points))}" data-unit="${esc(unit)}" data-color="${esc(color)}" data-floor-zero="${floorZero}" data-mode="${mode}"></gp-chart>`:'<div class="empty">No hay observaciones publicadas para esta selección.</div>'}
-export function metricsMarkup(metrics=[]){return metrics.length?`<div class="chart-metrics">${metrics.map(m=>`<span><small>${esc(m.label)}</small><b>${m.text?esc(m.text):Number.isFinite(m.value)?(m.unit==='%'?formatPercent(m.value,1,fmt):fmt(m.value,2)+' '+esc(m.unit||'')):'—'}</b></span>`).join('')}</div>`:''}
+export function chartMarkup(points,{unit='',color='#1860b4',floorZero=false,mode='line'}={}){return points.length?`<gp-chart data-series="${esc(JSON.stringify(points))}" data-unit="${esc(unitLabel(unit))}" data-color="${esc(color)}" data-floor-zero="${floorZero}" data-mode="${mode}"></gp-chart>`:'<div class="empty">No hay observaciones publicadas para esta selección.</div>'}
+export function metricsMarkup(metrics=[]){return metrics.length?`<div class="chart-metrics">${metrics.map(m=>`<span><small>${esc(m.label)}</small><b>${m.text?esc(m.text):Number.isFinite(m.value)?(m.unit==='%'?formatPercent(m.value,1,fmt):fmt(m.value,2)+' '+esc(unitLabel(m.unit||''))):'—'}</b></span>`).join('')}</div>`:''}
 let id=0;
 export class InteractiveChart extends HTMLElement{
  connectedCallback(){

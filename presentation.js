@@ -10,3 +10,5 @@ export function gapBefore(previous,current,{months=0,days=0}={}){
  if(months){const m=d=>+d.slice(0,4)*12+(+d.slice(5,7));return m(current)-m(previous)>months;}
  return days>0&&(Date.parse(current)-Date.parse(previous))/86400000>days;
 }
+
+export const unitLabel=value=>String(value??'').replace(/^t(?=$|\s)/,'Tn.').replace(/\/t(?=$|[\s.,;:)])\.?/g,'/Tn.');

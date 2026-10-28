@@ -22,3 +22,76 @@ body{font-size:14px}.filter{min-width:175px}.filter.wide{min-width:270px}.filter
 @media print{body{padding-top:42px}.print-brand{display:block!important;position:fixed;top:0;left:0;right:0;padding:8px 0;font-size:12px;color:#102d50;background:white;border-bottom:1px solid #ccd9df}.chart-tools,.chart-navigation,.chart-range,.chart-help{display:none!important}.panel,.kpi{break-inside:avoid}.table-wrap{max-height:none;overflow:visible}.source-link{color:#102d50;text-decoration:none}.cruise-series{display:block}.cruise-series .panel{margin-bottom:20px}}
 
 .nav-close{display:none}@media(max-width:760px){.nav-close{display:block;align-self:flex-end;color:white;background:transparent;font-size:24px;padding:4px 12px}.sidebar{overflow:auto}.sidebar .brand{margin-bottom:15px}}
+
+/* Identidad ExpoGlobalPorts 2026: originales suministrados por diseño. */
+.sidebar{background:#082b52}
+.sidebar .brand{margin-bottom:22px}
+.sidebar .logo-frame{height:126px;padding:10px;background:#fff;border-radius:12px}
+.sidebar .brand .logo-frame img{position:static;display:block;width:100%;height:100%;max-width:100%;object-fit:contain;left:auto;top:auto}
+.nav-item.active{background:#17496a;box-shadow:inset 3px 0 #32b3a1}
+.nav-item:focus-visible{outline-color:#32b3a1}
+.side-bottom p{font-size:16px;line-height:1.4;margin-bottom:16px}
+.event-masthead{max-width:1660px;margin:24px auto 0;padding:0 32px}
+.event-banner{overflow:hidden;border-radius:12px;background:#002957}
+.event-banner picture{display:block}
+.event-banner img{display:block;width:100%;height:auto;max-width:1060px;margin:auto}
+.event-mobile-caption{display:none}
+.event-masthead+main{padding-top:26px}
+@media(min-width:1500px){.event-masthead{padding:0 42px}}
+@media(max-width:1100px){.event-masthead{padding:0 24px}}
+@media(max-width:760px){.event-masthead{padding:0 15px;margin-top:16px}.event-masthead+main{padding-top:22px}.sidebar .logo-frame{height:126px}}
+@media(max-width:600px){.event-banner{display:flex;align-items:center;gap:16px;padding:14px}.event-banner picture{width:42%;flex-shrink:0}.event-mobile-caption{display:block;color:white;font-size:11px;line-height:1.5}.event-mobile-caption strong{display:block;color:#32b3a1;font-family:GothamRounded,Gotham,Arial,sans-serif;font-size:29px;line-height:1.15;margin-bottom:8px}}
+@media print{.event-masthead{display:none}}
+
+/* Ventanas normales: navegación accesible sin pantalla completa. */
+.sidebar{max-height:100dvh;overflow-y:auto;overscroll-behavior:contain}
+.sidebar>.brand,.sidebar>.side-label,.sidebar>nav,.sidebar>.side-bottom{flex-shrink:0}
+.workspace,main,.panel,.cols>*{min-width:0}
+.table-wrap{max-width:100%}
+@media(min-width:1200px){
+ .filter-bar[aria-label="Filtros de carga"]{display:grid;grid-template-columns:minmax(90px,.6fr) minmax(180px,.8fr) minmax(150px,1.1fr) minmax(220px,1.6fr) auto;gap:12px}
+ .filter-bar[aria-label="Filtros de carga"] .filter{min-width:0}
+}
+@media(min-width:761px) and (max-height:820px){
+ .sidebar{padding:14px 12px}
+ .sidebar .logo-frame{height:90px}
+ .sidebar .brand{margin-bottom:14px}
+ .side-label{margin-bottom:10px}
+ .sidebar nav{gap:4px}
+ .nav-item{padding:8px 10px;font-size:12px}
+ .nav-item span{font-size:18px}
+ .side-bottom{padding:12px 10px 2px}
+ .side-bottom p{font-size:13px;line-height:1.3;margin:4px 0 8px}
+ .side-note{padding-top:10px}
+ .topbar{height:54px}
+ main{padding:22px 24px}
+ .event-masthead{margin-top:12px;padding:0 24px}
+ .event-masthead+main{padding-top:18px}
+ .event-banner{display:flex;align-items:center;gap:24px;padding:10px 24px}
+ .event-banner picture{width:150px;flex:0 0 150px}
+ .event-banner img{width:100%;max-height:90px;object-fit:contain}
+ .event-mobile-caption{display:flex;align-items:center;gap:18px;color:white;font-size:13px;line-height:1.5;max-width:650px}
+ .event-mobile-caption strong{color:#32b3a1;font-family:GothamRounded,Gotham,Arial,sans-serif;font-size:32px;line-height:1.15;flex-shrink:0}
+ .page-head{margin-bottom:18px}
+ .filter-bar{margin-bottom:16px}
+ .kpis{gap:12px;margin-bottom:18px}
+ .kpi{padding:16px;min-height:110px}
+ .kpi:first-child{padding-top:14px}
+}
+
+/* Móvil: valor principal, unidad y aclaración en niveles separados. */
+@media(max-width:760px){
+ .kpi{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0;min-height:0;padding:16px}
+ .kpi-label{margin:0;font-size:12px;line-height:1.5;align-self:auto}
+ .kpi .kpi-value,.trade-card .kpi-value{display:block;width:100%;max-width:100%;font-size:clamp(24px,7vw,30px);line-height:1.2;overflow-wrap:anywhere}
+ .kpi .kpi-unit{display:block;margin:5px 0 0;font-size:12px;line-height:1.5;letter-spacing:0}
+ .kpi .kpi-unit-symbol{display:inline;margin-left:4px;font-size:.65em;color:inherit}
+ .kpi .kpi-unit:empty{display:none}
+ .kpi .trade-comparison-percent{display:block;margin-top:7px;font-size:16px;line-height:1.4}
+ .kpi .kpi-foot{display:block;max-width:100%;margin:0;font-size:11px;line-height:1.6;overflow-wrap:anywhere}
+ .kpi .kpi-foot .delta{display:inline-block;margin-bottom:4px}
+ .chart-readout{gap:8px;padding:12px}
+ .chart-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}
+ .chart-metrics small{font-size:10px;line-height:1.5}
+ .chart-metrics b{font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+}

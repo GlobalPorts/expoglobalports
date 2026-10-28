@@ -1,0 +1,1 @@
+export function formatNumber(value,decimals=0){return Number.isFinite(value)?new Intl.NumberFormat('es-AR',{useGrouping:true,maximumFractionDigits:decimals}).format(Number(value.toFixed(decimals))||0):'Sin datos'}

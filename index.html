@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es-AR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Actividad portuaria argentina, comercio y mercados. Inteligencia de datos de GlobalPorts Consultoría."><meta name="color-scheme" content="light"><title>ExpoGlobalPorts · Tablero de indicadores</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<aside class="sidebar" id="sidebar">
+ <button id="close-navigation" class="icon-button nav-close" aria-label="Cerrar navegación">×</button>
+ <a class="brand" href="#ports" aria-label="GlobalPorts, inicio"><span class="logo-frame"><img src="assets/globalports-white.png" alt="GlobalPorts"></span></a>
+ <div class="side-label">INTELIGENCIA SECTORIAL</div>
+ <nav aria-label="Secciones del dashboard">
+  <button class="nav-item active" data-view="ports"><span aria-hidden="true">▥</span> Cargas portuarias</button>
+  <button class="nav-item" data-view="markets"><span aria-hidden="true">↗</span> Mercados y fletes</button>
+  <button class="nav-item" data-view="cruises"><span aria-hidden="true">≈</span> Cruceros</button>
+  <button class="nav-item" data-view="commodities"><span aria-hidden="true">◈</span> Commodities y materias primas</button>
+  <button class="nav-item" data-view="trade"><span aria-hidden="true">⇄</span> Comercio exterior</button>
+  <button class="nav-item" data-view="activity"><span aria-hidden="true">⌁</span> Actividad</button>
+ </nav>
+ <div class="side-bottom"><p>ExpoGlobalPorts</p><div class="side-note">Tablero de indicadores</div><div class="side-note">GlobalPorts Consultoría</div></div>
+</aside>
+<div class="workspace">
+ <header class="topbar"><button id="menu" class="icon-button" aria-label="Mostrar navegación" aria-expanded="false">☰</button><div class="breadcrumb">GlobalPorts <span>/</span> <b id="breadcrumb">Cargas portuarias</b></div><div class="top-meta"><span id="snapshot">Cargando información…</span></div></header>
+ <main id="main" tabindex="-1"><div class="loading">Cargando indicadores…</div></main>
+ <footer><strong>GlobalPorts Consultoría</strong><span>Información portuaria, logística y de mercados</span></footer>
+</div>
+<dialog id="drill"><div class="dialog-top"><span class="eyebrow">APERTURA DE LA CATEGORÍA</span><button class="icon-button" id="close-dialog" aria-label="Cerrar detalle">×</button></div><h2 id="drill-title"></h2><div id="drill-body"></div></dialog>
+<div class="print-brand">ExpoGlobalPorts · Tablero de indicadores</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="app.js"></script>
+</body></html>
